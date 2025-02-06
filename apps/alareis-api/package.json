@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "@alareis/api",
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts"
