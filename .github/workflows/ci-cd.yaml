@@ -1,0 +1,28 @@
+name: 🐳 CI/CD
+
+# Cancel in-progress jobs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: ⚡️ Init
+        uses: ./.github/init
+
+  deploy:
+    if: ${{ contains(fromJSON('["refs/heads/main"]'), github.ref) }}
+    uses: ./.github/workflows/deploy.yaml
+    secrets: inherit

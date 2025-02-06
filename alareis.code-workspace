@@ -6,11 +6,11 @@
     },
     {
       "path": "apps/alareis-frontend",
-      "name": "alareis/frontend"
+      "name": "apps/alareis-frontend"
     },
     {
       "path": "apps/alareis-api",
-      "name": "alareis/api"
+      "name": "apps/alareis-api"
     }
   ],
   "settings": {

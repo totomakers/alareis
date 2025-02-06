@@ -1,0 +1,28 @@
+name: 🌍 Deploy @alareis/api
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ✨ Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: 🌍 Deployment
+        run: |
+          flyctl deploy \
+          --config ./apps/alaereis-api.fly.toml \
+          --app alareis-api \
+          --remote-only \
+          --env APP_VERSION=prod:${{ github.sha }}

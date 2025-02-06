@@ -4,9 +4,17 @@
   "keywords": [
     "rpg"
   ],
+  "scripts": {
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "prettier": "turbo run prettier",
+    "prettier:fix": "turbo run prettier:fix",
+    "build": "turbo run build"
+  },
   "author": "totomakers",
   "license": "MPL-2.0",
   "dependencies": {
     "turbo": "^2.4.0"
-  }
+  },
+  "packageManager": "pnpm@10.2.0"
 }
