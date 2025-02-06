@@ -18,6 +18,9 @@ jobs:
 
       - name: ⚡️ Init
         uses: ./.github/init
+
+      - name: 🔨 Build the frontend
+        run: pnpm run build --filter=@alareis/frontend 
       
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
