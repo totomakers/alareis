@@ -23,6 +23,7 @@ jobs:
         uses: ./.github/init
 
   deploy:
+    needs:  ['init']
     if: ${{ contains(fromJSON('["refs/heads/main"]'), github.ref) }}
     uses: ./.github/workflows/deploy.yaml
     secrets: inherit
