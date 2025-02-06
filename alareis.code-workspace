@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "path": "./",
+      "name": "monorepo"
+    },
+    {
+      "path": "apps/api",
+      "name": "apps/api"
+    },
+    {
+      "path": "apps/frontend",
+      "name": "apps/frontend"
+    },
+    {
+      "path": "libs/design-system",
+      "name": "libs/design-system"
+    },
+    {
+      "path": "libs/styled-system",
+      "name": "libs/styled-system"
+    }
+  ]
+}

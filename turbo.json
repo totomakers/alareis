@@ -1,0 +1,27 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^css:build", "^build", "css:build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**", "styled-system/**"]
+    },
+    "css:build": {
+      "dependsOn": ["^css:build", "^build"],
+      "outputs": ["styled-system/**"]
+    },
+    "storybook:build": {
+      "dependsOn": ["^css:build", "^build", "css:build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["storybook-static/**"]
+    },
+    "lint": {},
+    "lint:fix": {
+      "cache": false
+    },
+    "format": {},
+    "format:fix": {
+      "cache": false
+    }
+  }
+}

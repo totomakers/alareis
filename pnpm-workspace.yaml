@@ -1,0 +1,6 @@
+packages:
+  - "apps/*"
+  - "libs/**"
+
+overrides:
+  "rollup": "4.44.2"
