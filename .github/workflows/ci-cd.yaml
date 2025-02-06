@@ -22,6 +22,34 @@ jobs:
       - name: ⚡️ Init
         uses: ./.github/init
 
+  codeQL:
+    needs: init
+    strategy:
+      matrix:
+        tasks: ["build"]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⚡️ Restore
+        uses: ./.github/restore
+
+      - uses: actions/cache@v4
+        name: Setup turbo cache
+        with:
+          path: |
+            **/.turbo
+            .turbo
+          key: ${{ runner.os }}-${{matrix.tasks}}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-${{matrix.tasks}}-turbo-
+
+      - name: ✨ Run Task ${{ matrix.tasks }}
+        run: pnpm run ${{ matrix.tasks }}
+
   deploy:
     needs:  ['init']
     if: ${{ contains(fromJSON('["refs/heads/main"]'), github.ref) }}
