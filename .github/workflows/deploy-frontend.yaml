@@ -2,22 +2,14 @@ name: 🌍 Deploy @urbanradar/frontend
 
 on:
   workflow_call:
-    inputs:
-      env:
-        required: true
-        type: string
   workflow_dispatch:
-    inputs:
-      env:
-        required: true
-        type: string
+
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.env }}
     permissions:
       contents: read
       deployments: write
