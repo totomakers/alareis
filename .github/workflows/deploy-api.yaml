@@ -22,7 +22,7 @@ jobs:
       - name: 🌍 Deployment
         run: |
           flyctl deploy \
-          --config ./apps/alaereis-api.fly.toml \
+          --config ./.flyio/api.fly.toml \
           --app alareis-api \
           --remote-only \
           --env APP_VERSION=prod:${{ github.sha }}
