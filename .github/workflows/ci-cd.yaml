@@ -51,7 +51,7 @@ jobs:
         run: pnpm run ${{ matrix.tasks }}
 
   deploy:
-    needs:  ['init']
+    needs:  ['codeQL']
     if: ${{ contains(fromJSON('["refs/heads/main"]'), github.ref) }}
     uses: ./.github/workflows/deploy.yaml
     secrets: inherit
