@@ -1,0 +1,12 @@
+{
+  "name": "alareis",
+  "description": "Alareis website monorepo",
+  "keywords": [
+    "rpg"
+  ],
+  "author": "totomakers",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "turbo": "^2.4.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "monorepo"
+    },
+    {
+      "path": "apps/alareis-frontend",
+      "name": "alareis/frontend"
+    },
+    {
+      "path": "apps/alareis-api",
+      "name": "alareis/api"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "apps": true
+    }
+  }
+}
