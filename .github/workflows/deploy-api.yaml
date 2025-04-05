@@ -19,10 +19,25 @@ jobs:
       - name: ✨ Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
 
+      - name: 🐋 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🐋 Login to fly registry
+        run: flyctl auth docker
+
+      - name: 🐳 Docker build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          target: api
+          push: true
+          tags: registry.fly.io/alareis-api:${{ github.ref_name }}-${{ github.sha }}
+
       - name: 🌍 Deployment
         run: |
           flyctl deploy \
           --config ./.flyio/api.fly.toml \
           --app alareis-api \
-          --remote-only \
-          --env APP_VERSION=prod:${{ github.sha }}
+          --image "registry.fly.io/alareis-api:${{ github.ref_name }}-${{ github.sha }}" \
+          --env APP_VERSION=${{ github.ref_name }}:${{ github.sha }}

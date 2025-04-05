@@ -1,22 +1,13 @@
-# syntax = docker/dockerfile:1
+# base
+FROM node:22.14.0 AS base
 
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=23.7.0
-FROM node:${NODE_VERSION}-slim AS base
-
-# Copy needed files
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json /alareis/
-COPY ./apps/alareis-api /alareis/apps/alareis-api
-WORKDIR /alareis
-
-# Setup env
-ENV NODE_ENV="production"
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-
-# Install right pnpm version
-ARG PNPM_VERSION=10.2.0
+RUN npm i -g corepack 
 RUN corepack enable
+
+COPY . /monorepo
+WORKDIR /monorepo
 
 ## prod-deps
 FROM base AS prod-deps
@@ -26,7 +17,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-l
 # Build ==========
 # ================
 
-# Throw-away build stage to reduce size of final image
+# api
 FROM base AS build-api
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
@@ -49,4 +40,4 @@ WORKDIR /alareis/apps/alareis-api
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["node", "./dist/index.js"]
+CMD [ "pnpm", "start:prod" ]
