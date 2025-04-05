@@ -31,12 +31,12 @@ RUN pnpm run build --filter=@alareis/api
 FROM base AS api
 
 # Copy built application
-COPY --from=build-api /alareis/apps/alareis-api/dist /alareis/apps/alareis-api/dist
-COPY --from=prod-deps /alareis/node_modules /alareis/node_modules
-COPY --from=prod-deps /alareis/apps/alareis-api/node_modules /alareis/apps/alareis-api/node_modules
-COPY --from=prod-deps /alareis/apps/alareis-api/package.json /alareis/apps/alareis-api/package.json
+COPY --from=build-api /monorepo/apps/alareis-api/dist /monorepo/apps/alareis-api/dist
+COPY --from=prod-deps /monorepo/node_modules /monorepo/node_modules
+COPY --from=prod-deps /monorepo/apps/alareis-api/node_modules /monorepo/apps/alareis-api/node_modules
+COPY --from=prod-deps /monorepo/apps/alareis-api/package.json /monorepo/apps/alareis-api/package.json
 
-WORKDIR /alareis/apps/alareis-api
+WORKDIR /monorepo/apps/alareis-api
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
