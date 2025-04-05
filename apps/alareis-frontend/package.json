@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prepare": "panda codegen",
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:css": "panda codegen --clean",
     "lint": "eslint .",
     "preview": "vite preview",
     "prettier": "prettier . --check",

@@ -16,11 +16,5 @@
   "dependencies": {
     "turbo": "^2.4.0"
   },
-  "packageManager": "pnpm@10.2.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "esbuild"
-    ]
-  }
+  "packageManager": "pnpm@10.2.0"
 }
