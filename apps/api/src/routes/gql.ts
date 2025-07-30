@@ -1,7 +1,7 @@
 import { FastifyPluginCallback } from 'fastify'
 import { createYoga } from 'graphql-yoga'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { schema } from '../services/gql/schema.js'
+import { schema } from '../gql/schema.js'
 
 export const gqlRoutes: FastifyPluginCallback = (fastify) => {
   const yoga = createYoga<{

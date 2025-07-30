@@ -1,4 +1,4 @@
-import { builder } from '../services/gql/builder.js'
+import { builder } from '../builder.js'
 
 builder.queryType({
   fields: (t) => ({
