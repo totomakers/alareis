@@ -6,7 +6,7 @@ export const auth = betterAuth({
   database: new Database('./alareis.db'),
 })
 
-export const authPlugin: FastifyPluginCallback = (server, _, done) => {
+export const authRoutes: FastifyPluginCallback = (server) => {
   server.route({
     method: ['GET', 'POST'],
     url: '/api/auth/*',
@@ -47,6 +47,4 @@ export const authPlugin: FastifyPluginCallback = (server, _, done) => {
       }
     },
   })
-
-  done()
 }
