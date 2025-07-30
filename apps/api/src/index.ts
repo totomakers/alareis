@@ -13,7 +13,7 @@ server.get('/', () => {
 server.register(authRoutes)
 server.register(gqlRoutes)
 
-server.listen({ port: 8080, host: '127.0.0.1' }, (err, address) => {
+server.listen({ port: 8080 }, (err, address) => {
   if (err) {
     logger.error(err)
     process.exit(1)
