@@ -3,8 +3,14 @@ import { writeFileSync } from 'node:fs'
 import { builder } from './builder.js'
 
 import '../../modules/example.js'
+import { logger } from '../logger.js'
 
 export const schema = builder.toSchema()
-const schemaAsString = printSchema(lexicographicSortSchema(schema))
 
-writeFileSync('./schema.gql', schemaAsString)
+function doPrintSchema() {
+  logger.info('Printing GQL schema...')
+  const schemaAsString = printSchema(lexicographicSortSchema(schema))
+  writeFileSync('./schema.gql', schemaAsString)
+}
+
+if (process.env.NODE_ENV && process.env.NODE_ENV !== 'prod') doPrintSchema()
