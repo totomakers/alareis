@@ -34,5 +34,5 @@ WORKDIR /app
 COPY --from=installer /app .
 
 WORKDIR /app/apps/api
-EXPOSE 3000
+EXPOSE 8080
 CMD ["pnpm", "start:prod"]
