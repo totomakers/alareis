@@ -13,7 +13,8 @@
     "start:dev": "tsx watch src/index.ts",
     "start:prod": "node dist/src/index.js",
     "lint": "eslint \"src/**/*.ts\" --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint \"src/**/*.ts\" --fix"
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "db:update": "drizzle-kit push"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

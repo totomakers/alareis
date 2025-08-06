@@ -1,7 +1,7 @@
 import fastify from 'fastify'
 import { authRoutes } from './routes/auth.js'
 import 'dotenv/config'
-import { logger } from './services/logger.js'
+import { logger } from './lib/logger.js'
 import { gqlRoutes } from './routes/gql.js'
 
 const server = fastify()

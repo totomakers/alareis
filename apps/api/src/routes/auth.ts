@@ -1,10 +1,5 @@
-import { betterAuth } from 'better-auth'
 import { FastifyPluginCallback } from 'fastify'
-import Database from 'libsql'
-
-export const auth = betterAuth({
-  database: new Database('./alareis.db'),
-})
+import { auth } from '../lib/auth.js'
 
 export const authRoutes: FastifyPluginCallback = (server) => {
   server.route({

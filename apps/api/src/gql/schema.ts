@@ -3,7 +3,7 @@ import { writeFileSync } from 'node:fs'
 import { builder } from './builder.js'
 
 import './schema/example.js'
-import { logger } from '../services/logger.js'
+import { logger } from '../lib/logger.js'
 
 export const schema = builder.toSchema()
 
