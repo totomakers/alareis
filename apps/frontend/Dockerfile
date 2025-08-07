@@ -17,6 +17,10 @@ FROM base AS builder
 ARG VITE_FRONTEND_URI
 ENV VITE_FRONTEND_URI=$VITE_FRONTEND_URI
 
+ARG VITE_API_URI
+ENV VITE_API_URI=$VITE_API_URI
+
+
 WORKDIR /app
 COPY --from=setup /app/out/json/ .
 RUN pnpm install --frozen-lockfile
