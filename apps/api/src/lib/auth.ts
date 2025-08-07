@@ -9,7 +9,7 @@ export const auth = betterAuth({
     schema: authSchema,
   }),
   basePath: '/auth',
-  trustedOrigins: ['http://localhost:5173'],
+  trustedOrigins: ['http://localhost:5173', 'https://alareis.app'],
   socialProviders: {
     google: {
       clientId: process.env.BETTER_AUTH_GOOGLE_CLIENT_ID!,
