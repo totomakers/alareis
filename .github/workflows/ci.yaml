@@ -231,7 +231,7 @@ jobs:
             turbo_team=${{ secrets.TURBO_TEAM }}
             turbo_token=${{ secrets.TURBO_TOKEN }}
           build-args: |
-            FRONTEND_URI=${{secrets.FRONTEND_URI}}
+            VITE_FRONTEND_URI=${{secrets.FRONTEND_URI}}
 
       - name: 🌍 Deployment
         run: |
