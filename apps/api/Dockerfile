@@ -6,7 +6,7 @@ RUN npm i -g corepack
 RUN corepack enable
 
 
-FROM base AS builder
+FROM base AS setup
 
 WORKDIR /app
 
@@ -14,14 +14,14 @@ RUN pnpm add -g turbo
 COPY . .
 RUN turbo prune @alareis/api --docker
 
-FROM base AS installer
+FROM base AS builder
 
 WORKDIR /app
 
-COPY --from=builder /app/out/json/ .
+COPY --from=setup /app/out/json/ .
 RUN pnpm install --frozen-lockfile
 
-COPY --from=builder /app/out/full/ .
+COPY --from=setup /app/out/full/ .
 
 RUN --mount=type=secret,id=turbo_team,env=TURBO_TEAM \
     --mount=type=secret,id=turbo_token,env=TURBO_TOKEN \
@@ -31,7 +31,7 @@ RUN --mount=type=secret,id=turbo_team,env=TURBO_TEAM \
 FROM base AS runner
 WORKDIR /app
 
-COPY --from=installer /app .
+COPY --from=builder /app .
 
 WORKDIR /app/apps/api
 EXPOSE 8080

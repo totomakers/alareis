@@ -201,6 +201,7 @@ jobs:
   deploy-frontend:
     if: ${{ startsWith(github.ref, 'refs/heads/main')  }}
     runs-on: ubuntu-latest
+    environment: prod
     needs: ["chromatic"]
     steps:
       - name: 📥 Checkout
@@ -229,6 +230,8 @@ jobs:
           secrets: |
             turbo_team=${{ secrets.TURBO_TEAM }}
             turbo_token=${{ secrets.TURBO_TOKEN }}
+          build-args: |
+            FRONTEND_URI=${{secrets.FRONTEND_URI}}
 
       - name: 🌍 Deployment
         run: |

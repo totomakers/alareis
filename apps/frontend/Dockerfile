@@ -5,19 +5,22 @@ ENV PATH="$PNPM_HOME:$PATH"
 RUN npm i -g corepack 
 RUN corepack enable
 
-FROM base AS builder
+FROM base AS setup
 
 WORKDIR /app
 RUN pnpm add -g turbo
 COPY . .
 RUN turbo prune @alareis/frontend --docker
 
-FROM base AS installer
+FROM base AS builder
+
+ARG VITE_FRONTEND_URI
+ENV VITE_FRONTEND_URI=$VITE_FRONTEND_URI
 
 WORKDIR /app
-COPY --from=builder /app/out/json/ .
+COPY --from=setup /app/out/json/ .
 RUN pnpm install --frozen-lockfile
-COPY --from=builder /app/out/full/ .
+COPY --from=setup /app/out/full/ .
 
 RUN --mount=type=secret,id=turbo_team,env=TURBO_TEAM \
     --mount=type=secret,id=turbo_token,env=TURBO_TOKEN \
@@ -27,5 +30,5 @@ RUN --mount=type=secret,id=turbo_team,env=TURBO_TEAM \
 
 FROM nginx:alpine AS runner
 
-COPY --from=installer /app/apps/frontend/dist /usr/share/nginx/html
-COPY --from=builder /app/apps/frontend/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/apps/frontend/dist /usr/share/nginx/html
+COPY --from=setup /app/apps/frontend/nginx.conf /etc/nginx/conf.d/default.conf

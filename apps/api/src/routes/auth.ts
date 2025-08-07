@@ -4,7 +4,7 @@ import { auth } from '../lib/auth.js'
 export const authRoutes: FastifyPluginCallback = (server) => {
   server.route({
     method: ['GET', 'POST'],
-    url: '/api/auth/*',
+    url: '/auth/*',
     async handler(request, reply) {
       try {
         // Construct request URL

@@ -20,5 +20,8 @@
       "path": "libs/styled-system",
       "name": "libs/styled-system"
     }
-  ]
+  ],
+  "settings": {
+    "typescript.tsdk": "apps\\frontend\\node_modules\\typescript\\lib"
+  }
 }
