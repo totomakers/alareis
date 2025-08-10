@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "rangeStrategy": "bump",
+  "labels": ["dependencies"],
+  "timezone": "Europe/Paris",
+  "extends": [
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases",
+    ":automergeDisabled",
+    ":approveMajorUpdates",
+    ":maintainLockFilesDisabled",
+    "schedule:daily"
+  ]
+}
