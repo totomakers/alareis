@@ -9,6 +9,7 @@
     ":automergeDisabled",
     ":approveMajorUpdates",
     ":maintainLockFilesDisabled",
-    "schedule:daily"
+    "schedule:daily",
+    "group:allNonMajor"
   ]
 }
