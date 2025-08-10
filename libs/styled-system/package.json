@@ -8,7 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.12.3",
+  "packageManager": "pnpm@10.14.0",
   "devDependencies": {
     "@pandacss/dev": "^0.54.0"
   },
