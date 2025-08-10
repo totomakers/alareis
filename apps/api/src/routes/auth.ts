@@ -34,7 +34,7 @@ export const authRoutes: FastifyPluginCallback = (server) => {
 
         reply.send(response.body ? await response.text() : null)
       } catch (error) {
-        server.log.error('Authentication Error:', error)
+        server.log.error(error, 'Authentication Error:')
         reply.status(500).send({
           error: 'Internal authentication error',
           code: 'AUTH_FAILURE',
