@@ -8,9 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.15.0",
   "devDependencies": {
-    "@pandacss/dev": "^1.0.1"
+    "@pandacss/dev": "^1.1.0"
   },
   "exports": {
     "./css": {
